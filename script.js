@@ -1,5 +1,5 @@
-// Catálogo de 10 productos
-const productos = [
+// Catálogo de 10 Servicios
+const Servicios = [
     {
         id: 1,
         nombre: "Laptop Pro Developer 15\"",
@@ -72,12 +72,12 @@ const productos = [
     }
 ];
 
-// Función para renderizar los productos en el HTML
-function mostrarProductos() {
-    const contenedor = document.getElementById('grid-productos');
+// Función para renderizar los Servicios en el HTML
+function mostrarServicios() {
+    const contenedor = document.getElementById('grid-Servicios');
     let htmlContent = '';
 
-    productos.forEach(producto => {
+    Servicios.forEach(producto => {
         htmlContent += `
             <article class="tarjeta-producto">
                 <img src="${producto.imagen}" alt="${producto.nombre}">
@@ -102,5 +102,6 @@ function contactarVendedor(nombreProducto) {
     window.open(urlWhatsapp, '_blank');
 }
 
-// Cargar los productos cuando la página termine de cargar
-document.addEventListener('DOMContentLoaded', mostrarProductos);
+// Cargar los Servicios cuando la página termine de cargar
+
+document.addEventListener('DOMContentLoaded', mostrarServicios);
