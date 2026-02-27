@@ -2,8 +2,10 @@
 :root {
     --color-primario: #0056b3;
     --color-secundario: #f4f4f4;
+    --color-oferta: #dc3545; /* Rojo para ofertas */
     --texto-oscuro: #333;
     --texto-claro: #fff;
+    --borde-gris: #e0e0e0;
 }
 
 * {
@@ -16,6 +18,9 @@
 body {
     background-color: #f9f9f9;
     color: var(--texto-oscuro);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 /* Header */
@@ -58,7 +63,7 @@ header nav a:hover {
     background-color: var(--color-secundario);
     text-align: center;
     padding: 4rem 2rem;
-    margin-bottom: 2rem;
+    border-bottom: 1px solid var(--borde-gris);
 }
 
 .hero h1 {
@@ -66,14 +71,89 @@ header nav a:hover {
     margin-bottom: 0.5rem;
 }
 
-/* Servicios */
-.contenedor-Servicios {
+/* --- NUEVO: Main Container y Banners --- */
+.main-container {
+    display: flex;
+    flex-direction: row; /* Diseño de 3 columnas */
     padding: 2rem 5%;
-    max-width: 1200px;
+    max-width: 1400px;
     margin: 0 auto;
+    flex-grow: 1;
 }
 
-.contenedor-Servicios h2 {
+.sidebar {
+    width: 250px;
+    flex-shrink: 0;
+    margin: 0 1rem;
+    background-color: var(--texto-claro);
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    position: sticky; /* Se mantienen visibles al hacer scroll */
+    top: 80px;
+    height: calc(100vh - 120px); /* Altura dinámica */
+}
+
+.side-left {
+    margin-left: 0;
+}
+
+.side-right {
+    margin-right: 0;
+}
+
+.sidebar-info {
+    padding: 1.5rem;
+    text-align: center;
+    border-bottom: 1px solid var(--borde-gris);
+}
+
+.sidebar-info h3 {
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1.4;
+}
+
+.sidebar-offer {
+    padding: 1rem;
+    background-color: var(--color-oferta);
+    color: var(--texto-claro);
+    text-align: center;
+    font-weight: 700;
+    font-size: 1rem;
+}
+
+/* --- Carrusel Estilos --- */
+.carrousel {
+    flex-grow: 1;
+    position: relative;
+    overflow: hidden;
+}
+
+.carrousel img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 1s ease-in-out; /* Efecto de fundido de 1 segundo */
+}
+
+.carrousel img.active {
+    opacity: 1;
+}
+
+/* --- Productos --- */
+.contenedor-productos {
+    flex-grow: 1;
+    padding: 0 2rem;
+}
+
+.contenedor-productos h2 {
     text-align: center;
     margin-bottom: 2rem;
     font-size: 2rem;
@@ -90,19 +170,21 @@ header nav a:hover {
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    transition: transform 0.3s;
+    transition: transform 0.3s, box-shadow 0.3s;
     display: flex;
     flex-direction: column;
 }
 
 .tarjeta-producto:hover {
     transform: translateY(-5px);
+    box-shadow: 0 8px 12px rgba(0,0,0,0.15);
 }
 
 .tarjeta-producto img {
     width: 100%;
     height: 200px;
     object-fit: cover;
+    border-bottom: 1px solid var(--borde-gris);
 }
 
 .info-producto {
@@ -152,7 +234,7 @@ footer {
     color: var(--texto-claro);
     padding: 3rem 5% 1rem;
     text-align: center;
-    margin-top: 3rem;
+    margin-top: auto; /* Mueve el footer al final */
 }
 
 .footer-info {
@@ -183,5 +265,30 @@ footer {
     color: #aaa;
     border-top: 1px solid #555;
     padding-top: 1rem;
+}
 
+/* --- Media Queries (Responsividad) --- */
+@media (max-width: 1100px) {
+    .main-container {
+        flex-direction: column; /* Apila los elementos en pantallas pequeñas */
+    }
+
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: static;
+        margin: 1rem 0;
+    }
+
+    .side-left, .side-right {
+        margin: 1rem 0;
+    }
+
+    .carrousel {
+        height: 300px; /* Altura fija para el carrusel en móvil */
+    }
+
+    .contenedor-productos {
+        padding: 1rem 0;
+    }
 }
