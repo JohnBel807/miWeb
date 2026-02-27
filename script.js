@@ -1,5 +1,5 @@
-// Catálogo de 10 Servicios
-const Servicios = [
+// Catálogo de 10 productos
+const productos = [
     {
         id: 1,
         nombre: "Laptop Pro Developer 15\"",
@@ -72,12 +72,12 @@ const Servicios = [
     }
 ];
 
-// Función para renderizar los Servicios en el HTML
-function mostrarServicios() {
-    const contenedor = document.getElementById('grid-Servicios');
+// Función para renderizar los productos en el HTML
+function mostrarProductos() {
+    const contenedor = document.getElementById('grid-productos');
     let htmlContent = '';
 
-    Servicios.forEach(producto => {
+    productos.forEach(producto => {
         htmlContent += `
             <article class="tarjeta-producto">
                 <img src="${producto.imagen}" alt="${producto.nombre}">
@@ -97,11 +97,33 @@ function mostrarServicios() {
 // Función simple para el botón (redirige a WhatsApp)
 function contactarVendedor(nombreProducto) {
     const mensaje = encodeURIComponent(`Hola Tecnoriente JB, estoy interesado en el producto: ${nombreProducto}`);
-    // Reemplaza el número con el formato internacional correcto para WhatsApp
     const urlWhatsapp = `https://wa.me/573116861370?text=${mensaje}`;
     window.open(urlWhatsapp, '_blank');
 }
 
-// Cargar los Servicios cuando la página termine de cargar
+// --- NUEVO: Función para controlar carruseles automáticos ---
+function iniciarCarrusel(idCarrusel, intervaloMs) {
+    const carrousel = document.getElementById(idCarrusel);
+    const imagenes = carrousel.getElementsByTagName('img');
+    let indexActivo = 0;
 
-document.addEventListener('DOMContentLoaded', mostrarServicios);
+    if (imagenes.length <= 1) return; // No hace nada si hay solo una imagen
+
+    setInterval(() => {
+        // Quita la clase 'active' de la imagen actual
+        imagenes[indexActivo].classList.remove('active');
+
+        // Incrementa el índice y vuelve a cero si llega al final
+        indexActivo = (indexActivo + 1) % imagenes.length;
+
+        // Añade la clase 'active' a la nueva imagen
+        imagenes[indexActivo].classList.add('active');
+    }, intervaloMs);
+}
+
+// Cargar los productos y carruseles cuando la página termine de cargar
+document.addEventListener('DOMContentLoaded', () => {
+    mostrarProductos();
+    iniciarCarrusel('carrousel-left', 3000); // 3 segundos para fotografía
+    iniciarCarrusel('carrousel-right', 5000); // 5 segundos para promociones (más lento)
+});
