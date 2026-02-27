@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tecnoriente JB - Catálogo de Servicios</title>
+    <title>Tecnoriente JB - Catálogo de Productos</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
@@ -13,22 +13,50 @@
         <div class="logo">Tecnoriente JB</div>
         <nav>
             <ul>
-                <li><a href="#Servicios">Servicios</a></li>
+                <li><a href="#productos">Productos</a></li>
                 <li><a href="#contacto">Contacto</a></li>
             </ul>
         </nav>
     </header>
 
-    <main>
-        <section class="hero">
-            <h1>Bienvenido a nuestro catálogo</h1>
-            <p>Encuentra las mejores soluciones tecnológicas al mejor precio.</p>
+    <section class="hero">
+        <h1>Bienvenido a nuestro catálogo</h1>
+        <p>Encuentra las mejores soluciones tecnológicas al mejor precio.</p>
+    </section>
+
+    <main class="main-container">
+
+        <aside class="sidebar side-left">
+            <div class="sidebar-info">
+                <h3>Serviccio fotografico para bodas, eventos y foto estudio</h3>
+            </div>
+            <div class="carrousel carrousel-left" id="carrousel-left">
+                <img src="https://picsum.photos/seed/boda1/300/400" alt="Boda 1" class="active">
+                <img src="https://picsum.photos/seed/evento1/300/400" alt="Evento 1">
+                <img src="https://picsum.photos/seed/fotoestudio1/300/400" alt="Foto Estudio 1">
+                <img src="https://picsum.photos/seed/boda2/300/400" alt="Boda 2">
+                <img src="https://picsum.photos/seed/evento2/300/400" alt="Evento 2">
+                <img src="https://picsum.photos/seed/fotoestudio2/300/400" alt="Foto Estudio 2">
+            </div>
+        </aside>
+
+        <section id="productos" class="contenedor-productos">
+            <h2>Nuestros Productos</h2>
+            <div id="grid-productos" class="grid"></div>
         </section>
 
-        <section id="Servicios" class="contenedor-Servicios">
-            <h2>Nuestros Servicios</h2>
-            <div id="grid-Servicios" class="grid"></div>
-        </section>
+        <aside class="sidebar side-right">
+            <div class="sidebar-info">
+                <h3>¡Dispositivos en promoción!</h3>
+            </div>
+            <div class="carrousel carrousel-right" id="carrousel-right">
+                <img src="https://picsum.photos/seed/promo1/300/400" alt="Promo 1" class="active">
+                <img src="https://picsum.photos/seed/promo2/300/400" alt="Promo 2">
+                <img src="https://picsum.photos/seed/promo3/300/400" alt="Promo 3">
+            </div>
+            <div class="sidebar-offer">Descuentos exclusivos</div>
+        </aside>
+
     </main>
 
     <footer id="contacto">
@@ -36,10 +64,10 @@
             <h3>Tecnoriente JB</h3>
             <p>📍 Barbosa, Santander, Colombia</p>
             <p>📞 Teléfono/WhatsApp: <a href="tel:+573116861370">311 686 1370</a></p>
-            <p>✉️ Correo: tecnorientejb@gmail.com</p>
+            <p>✉️ Correo: contacto@tecnorientejb.com</p>
         </div>
         <div class="redes-sociales">
-            <a href="https://www.facebook.com/MiTecnoYa/">Facebook</a> | 
+            <a href="#">Facebook</a> | 
             <a href="#">Instagram</a> | 
             <a href="#">LinkedIn</a>
         </div>
@@ -48,5 +76,4 @@
 
     <script src="script.js"></script>
 </body>
-
 </html>
